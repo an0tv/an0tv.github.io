@@ -1,4 +1,3 @@
-/*
 import * as THREE from 'three';
 
 const scene = new THREE.Scene();
@@ -25,4 +24,4 @@ function animate() {
 }
 
 animate();
-*/
+
