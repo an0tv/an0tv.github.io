@@ -100,7 +100,7 @@ controls.minPolarAngle = Math.PI/4;
 //reset function to make sure object is not highlighted
 function reset() {
     if(clickable.children.length > 0){
-        console.log(scene.children[0]);
+        //console.log(scene.children[0]);
         clickable.children[0].material.opacity = 1.0;
     }
 }
