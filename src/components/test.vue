@@ -14,22 +14,39 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 const pointlight = new THREE.PointLight(0xffffff, 50)
 const backlight = new THREE.PointLight(0xffffff, 15);
 const renderer = new THREE.WebGLRenderer();
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
+pointer.set(1, -1);
+function onPointerMove( event ) {
+    pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1 ;
+    pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1  ;
+    //console.log(pointer)
+}
 
-
-
+//cube
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshPhongMaterial( { color: 0xff0f00 } );
+const material = new THREE.MeshStandardMaterial( { color: 0xff0f00 } );
 const cube = new THREE.Mesh( geometry, material );
 cube.castShadow = true;
-scene.add( cube );
+
+//lighting magic
+
+
+//postion adjustments
 pointlight.position.set(3, 5, 4);
 backlight.position.set(-3, -1, -5);
+camera.position.set(5,5,5);
+//scene additions
+scene.add( cube );
 scene.add(backlight)
 scene.add(pointlight)
-camera.position.z = 5;
 
+
+
+
+//event listeners 
 window.addEventListener('resize', () => {
     //update size
     sizes.width = window.innerWidth
@@ -44,11 +61,37 @@ window.addEventListener('resize', () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 })
 
+
+
+//controls stuff
 const controls = new OrbitControls( camera, renderer.domElement );
+controls.enableZoom = false;
+controls.screenSpacePanning = false;
+
+function hover() {
+    
+	// update the picking ray with the camera and pointer position
+	raycaster.setFromCamera( pointer, camera );
+
+    // calculate objects intersecting the picking ray
+    const intersects = raycaster.intersectObjects( scene.children );
+
+    if (intersects.length > 0) {
+        const newMaterial = intersects[0].object.material.clone();
+        newMaterial.transparent = true;
+        newMaterial.opacity = 0.5;
+        intersects[0].object.material = newMaterial;
+        console.log(intersects);
+    }
+}
+
+window.addEventListener( 'pointermove', onPointerMove );
 
 function animate() {
+    pointlight.position.copy(camera.position);
 	requestAnimationFrame( animate );
     controls.update();
+    hover();
 	renderer.render( scene, camera );
 }
 
