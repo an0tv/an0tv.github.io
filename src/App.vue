@@ -2,12 +2,11 @@
 import { ref } from 'vue';
 import desktop from './components/main_page.vue';
 import mobile from './components/secondary_page.vue';
-function isMobile() {
-  return window.navigator.userAgentData.mobile;
-}
+const isMobileDevice = /Mobi/i.test(window.navigator.userAgent)
+console.log(isMobileDevice);
 </script>
 <template>
-  <div v-if="isMobile()">
+  <div v-if="isMobileDevice">
     <mobile/>
   </div>
   <div v-else>
