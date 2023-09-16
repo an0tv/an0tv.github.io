@@ -12,37 +12,63 @@ const sizes = {
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 const pointlight = new THREE.PointLight(0xffffff, 50)
-const backlight = new THREE.PointLight(0xffffff, 15);
+//const backlight = new THREE.PointLight(0xffffff, 15);
 const renderer = new THREE.WebGLRenderer();
 const raycaster = new THREE.Raycaster();
+const clickcaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
+const mouse = new THREE.Vector2();
+var floor = new THREE.Group();
+var clickable = new THREE.Group();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 pointer.set(1, -1);
+mouse.set(1, -1);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+//functions for both raycasting and selecting objects
 function onPointerMove( event ) {
     pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1 ;
     pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1  ;
     //console.log(pointer)
 }
 
+function onMouseClick( event ) {
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1 ;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1  ;
+    //console.log(pointer)
+}
+
+const ground = new THREE.BoxGeometry(100, 1, 100);
+const groundMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+const path = new THREE.Mesh(ground, groundMaterial);
+path.position.set(0, -3, 0);
+path.receiveShadow = true;
+floor.add(path);
 //cube
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 const material = new THREE.MeshStandardMaterial( { color: 0xff0f00 } );
 const cube = new THREE.Mesh( geometry, material );
 cube.castShadow = true;
+clickable.add(cube);
 
 //lighting magic
 
 
 //postion adjustments
 pointlight.position.set(3, 5, 4);
-backlight.position.set(-3, -1, -5);
+pointlight.castShadow = true;
+//backlight.position.set(-3, -1, -5);
 camera.position.set(5,5,5);
+pointlight.intensity = 100;
 //scene additions
-scene.add( cube );
-scene.add(backlight)
+scene.add( floor);
+scene.add( clickable );
+//scene.add(backlight)
 scene.add(pointlight)
-
+//scene.add(cube)
+//scene.add(path)
 
 
 
@@ -60,18 +86,22 @@ window.addEventListener('resize', () => {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 })
+window.addEventListener( 'pointermove', onPointerMove );
+window.addEventListener( 'click' , onMouseClick);
 
 
 
 //controls stuff
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableZoom = false;
-controls.maxPolarAngle = 3 * Math.PI/4;
+controls.maxPolarAngle = 2.2 * Math.PI/4;
 controls.minPolarAngle = Math.PI/4;
 
+//reset function to make sure object is not highlighted
 function reset() {
-    if(scene.children.length > 0){
-        scene.children[0].material.opacity = 1.0;
+    if(clickable.children.length > 0){
+        console.log(scene.children[0]);
+        clickable.children[0].material.opacity = 1.0;
     }
 }
 
@@ -81,7 +111,7 @@ function hover() {
 	raycaster.setFromCamera( pointer, camera );
 
     // calculate objects intersecting the picking ray
-    const intersects = raycaster.intersectObjects( scene.children );
+    const intersects = raycaster.intersectObjects( clickable.children );
 
     if (intersects.length > 0) {
         const newMaterial = intersects[0].object.material.clone();
@@ -93,16 +123,31 @@ function hover() {
     //console.log(intersects.length);
 }
 
-window.addEventListener( 'pointermove', onPointerMove );
+function select() {
+    clickcaster.setFromCamera( mouse, camera );
+
+    // calculate objects intersecting the picking ray
+    const intersectsClick = clickcaster.intersectObjects( clickable.children );
+
+    if (intersectsClick.length > 0) {
+        const newMaterial = intersectsClick[0].object.material.clone();
+        newMaterial.color.set(0x00ff00);
+        intersectsClick[0].object.material = newMaterial;
+        //console.log(intersectsClick);
+    }
+}
+
+
 
 
 
 function animate() {
-    pointlight.position.copy(camera.position);
+    //pointlight.position.copy(camera.position);
 	requestAnimationFrame( animate );
     controls.update();
     reset();
     hover();
+    select();
 	renderer.render( scene, camera );
 }
 
