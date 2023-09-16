@@ -68,6 +68,12 @@ const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableZoom = false;
 controls.screenSpacePanning = false;
 
+function reset() {
+    if(scene.children.length > 0){
+        scene.children[0].material.opacity = 1.0;
+    }
+}
+
 function hover() {
     
 	// update the picking ray with the camera and pointer position
@@ -81,8 +87,9 @@ function hover() {
         newMaterial.transparent = true;
         newMaterial.opacity = 0.5;
         intersects[0].object.material = newMaterial;
-        console.log(intersects);
+        //console.log(intersects);
     }
+    //console.log(intersects.length);
 }
 
 window.addEventListener( 'pointermove', onPointerMove );
@@ -91,6 +98,7 @@ function animate() {
     pointlight.position.copy(camera.position);
 	requestAnimationFrame( animate );
     controls.update();
+    reset();
     hover();
 	renderer.render( scene, camera );
 }
