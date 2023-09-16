@@ -11,8 +11,8 @@ const sizes = {
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-const pointlight = new THREE.PointLight(0xffffff, 50)
-//const backlight = new THREE.PointLight(0xffffff, 15);
+const pointlight = new THREE.PointLight(0xffffff, 50);
+const backlight = new THREE.PointLight(0xffffff, 15);
 const renderer = new THREE.WebGLRenderer();
 const raycaster = new THREE.Raycaster();
 const clickcaster = new THREE.Raycaster();
@@ -62,10 +62,11 @@ pointlight.castShadow = true;
 //backlight.position.set(-3, -1, -5);
 camera.position.set(5,5,5);
 pointlight.intensity = 100;
+backlight.intensity = 20;
 //scene additions
 scene.add( floor);
 scene.add( clickable );
-//scene.add(backlight)
+scene.add(backlight)
 scene.add(pointlight)
 //scene.add(cube)
 //scene.add(path)
@@ -142,7 +143,7 @@ function select() {
 
 
 function animate() {
-    //pointlight.position.copy(camera.position);
+    backlight.position.copy(camera.position);
 	requestAnimationFrame( animate );
     controls.update();
     reset();
