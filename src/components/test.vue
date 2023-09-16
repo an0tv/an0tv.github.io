@@ -66,7 +66,8 @@ window.addEventListener('resize', () => {
 //controls stuff
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableZoom = false;
-controls.screenSpacePanning = false;
+controls.maxPolarAngle = 3 * Math.PI/4;
+controls.minPolarAngle = Math.PI/4;
 
 function reset() {
     if(scene.children.length > 0){
