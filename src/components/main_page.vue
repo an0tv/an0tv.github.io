@@ -95,6 +95,8 @@ function hover() {
 
 window.addEventListener( 'pointermove', onPointerMove );
 
+
+
 function animate() {
     pointlight.position.copy(camera.position);
 	requestAnimationFrame( animate );
