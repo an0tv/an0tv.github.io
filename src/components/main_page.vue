@@ -1,7 +1,6 @@
 <script setup>
 import * as THREE from 'three';
 import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
-
 //sizes of window for window optimization 
 const sizes = {
     width: window.innerWidth,
@@ -151,6 +150,43 @@ function animate() {
     select();
 	renderer.render( scene, camera );
 }
+
+function dispose(){           
+
+// dispose geometries and materials in scene
+sceneTraverse(scene, o => {
+
+    if (o.geometry) {
+        o.geometry.dispose()
+        console.log("dispose geometry ", o.geometry)                        
+    }
+
+    if (o.material) {
+        if (o.material.length) {
+            for (let i = 0; i < o.material.length; ++i) {
+                o.material[i].dispose()
+                console.log("dispose material ", o.material[i])                                
+            }
+        }
+        else {
+            o.material.dispose()
+            console.log("dispose material ", o.material)                            
+        }
+    }
+})          
+
+scene = null
+camera = null
+renderer && renderer.renderLists.dispose()
+renderer = null
+
+addBtn.removeEventListener("click", addMeshes)
+disposeBtn.removeEventListener("click", dispose)
+
+console.log("Dispose!")
+}
+
+
 
 animate()
 </script>
