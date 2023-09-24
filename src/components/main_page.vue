@@ -1,18 +1,21 @@
 <script setup>
 import * as THREE from 'three';
 import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
+import { CSS2DRenderer } from '/node_modules/three/examples/jsm/renderers/CSS2DRenderer.js';
+import { onBeforeUnmount } from 'vue';
 //sizes of window for window optimization 
 const sizes = {
     width: window.innerWidth,
     height: window.innerHeight
 }
 
-
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+const pageRenderer = new CSS2DRenderer();
+var id;
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 const pointlight = new THREE.PointLight(0xffffff, 50);
 const backlight = new THREE.PointLight(0xffffff, 15);
-const renderer = new THREE.WebGLRenderer();
+var renderer = new THREE.WebGLRenderer();
 const raycaster = new THREE.Raycaster();
 const clickcaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
@@ -25,6 +28,7 @@ pointer.set(1, -1);
 mouse.set(1, -1);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+console.log('started');
 
 //functions for both raycasting and selecting objects
 function onPointerMove( event ) {
@@ -92,7 +96,7 @@ window.addEventListener( 'click' , onMouseClick);
 
 
 //controls stuff
-const controls = new OrbitControls( camera, renderer.domElement );
+var controls = new OrbitControls( camera, renderer.domElement );
 controls.enableZoom = false;
 controls.maxPolarAngle = 2.2 * Math.PI/4;
 controls.minPolarAngle = Math.PI/4;
@@ -149,44 +153,31 @@ function animate() {
     hover();
     select();
 	renderer.render( scene, camera );
+    //requestAnimationFrame(animate);
 }
+animate()
 
 function dispose(){           
-
-// dispose geometries and materials in scene
-sceneTraverse(scene, o => {
-
-    if (o.geometry) {
-        o.geometry.dispose()
-        console.log("dispose geometry ", o.geometry)                        
+    while (scene.children.length){
+        scene.remove(scene.children[0]);
     }
-
-    if (o.material) {
-        if (o.material.length) {
-            for (let i = 0; i < o.material.length; ++i) {
-                o.material[i].dispose()
-                console.log("dispose material ", o.material[i])                                
-            }
-        }
-        else {
-            o.material.dispose()
-            console.log("dispose material ", o.material)                            
-        }
-    }
-})          
-
-scene = null
-camera = null
-renderer && renderer.renderLists.dispose()
-renderer = null
-
-addBtn.removeEventListener("click", addMeshes)
-disposeBtn.removeEventListener("click", dispose)
-
-console.log("Dispose!")
+    geometry.dispose();
+    material.dispose();
+    renderer.domElement.addEventListener('dbclick', null, false);
+    controls.dispose();
+    renderer.dispose();
+    console.log("Dispose!")
+    
 }
 
 
 
-animate()
+
+onBeforeUnmount(() => {
+    console.log('deleted')
+    id = requestAnimationFrame( animate );
+    cancelAnimationFrame(id);
+    console.log(id);
+    dispose();
+})
 </script>

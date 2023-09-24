@@ -1,1 +1,25 @@
-body{ margin: 0; }
+body, html, .app{
+    height: 100%;
+}
+.top {
+    color: red;
+    margin-left: 10px;
+}
+.sidebar{
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+}
+.sidebar div{
+    padding: 8px;
+    font-size: 24px;
+    display: block;
+}
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}

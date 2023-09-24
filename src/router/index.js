@@ -1,10 +1,13 @@
-const Home = { template: '<div>Home</div>' }
-import cube from '../components/main_page.vue'
+//import cube from '../components/main_page.vue'
+import projects from '../components/projects.vue' 
+import home from '../components/home.vue'
+import personal from '../components/personal.vue'
 import { createRouter, createWebHistory } from "vue-router"
 const routes = [
-  {path: '/', component:Home},
-  { path: '/test', component: Home },
-  { path: '/cube', component: cube },
+  { path: '/', component: home },
+  { path: '/personal', component: personal },
+  //{ path: '/cube', component: cube },
+  { path: '/projects', component: projects },
 ]
 
 const router = createRouter({
