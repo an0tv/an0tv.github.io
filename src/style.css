@@ -44,25 +44,29 @@ div.content {
     height: 1000px;
 }
 .item{
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     padding: 1em;
     margin: 10px 10px 10px 10px;
     font-weight: 700;
     text-align: center;
     border: 5px;
     border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: 3%;
 
 }
 .item_desc{
-    width: 300px;
-    height: 250px;
+    width: 400px;
+    height: 300px;
     padding: 1em;
     margin: 10px 10px 10px 10px;
     font-weight: 700;
     text-align: center;
     border: 5px;
     border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 .row {
     display: flex;
@@ -78,11 +82,14 @@ div.content {
 .container{
     display: flex;
     flex-wrap: wrap;
-    margin: 0 10px 0 10px;
+    margin: 0;
+
 }
 .center{
     display: flex;
     justify-content: center;
+    text-align: center;
+
 }
 .card_color{
     background-color: #DBD8E3;
