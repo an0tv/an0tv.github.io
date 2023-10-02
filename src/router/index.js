@@ -2,7 +2,7 @@
 import projects from '../components/projects.vue' 
 import home from '../components/home.vue'
 import personal from '../components/personal.vue'
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHashHistory } from "vue-router"
 const routes = [
   { path: '/', component: home },
   { path: '/personal', component: personal },
@@ -11,7 +11,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 })
 
