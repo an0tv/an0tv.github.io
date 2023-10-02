@@ -10,7 +10,12 @@ body, html, .app, template, div{
     background-color: #5C5470;
     padding: 0 7% 5px 7%;
     border-radius: 5px;
-
+}
+.top:hover{
+    background-color: #4b445c;
+    border: 4px solid #4b445c;
+    padding: 0 7% 5px 7%;
+    border-radius: 5px;
 }
 .sidebar{
     display: flex;
@@ -88,7 +93,7 @@ a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 
 
-a:hover { text-decoration: none; }
+a:hover { color: black; }
 
 
 a:active { text-decoration: none; }

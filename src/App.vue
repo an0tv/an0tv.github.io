@@ -6,11 +6,12 @@ function reloadPage(){
 }
 </script>
 <template>
- 
+ <!--
  <div v-if="isMobileDevice">
     <mobile/>
   </div>
-  <div  class="sidebar" v-else>
+-->
+  <div  class="sidebar">
     <RouterLink class="top" to="/"> Home </RouterLink>
     <RouterLink class="top" to="/personal" > Personal </RouterLink>
     <RouterLink class="top" to="/projects"> Projects </RouterLink>
