@@ -1,11 +1,15 @@
 body, html, .app, template, div{
     height: 100%;
     margin: 0;
+    background-color: #5C5470;
+    
 }
 .top {
-    color: red;
-    border: 4px solid purple;
+    color: #2A2438;
+    border: 4px solid #5C5470;
+    background-color: #5C5470;
     padding: 0 7% 5px 7%;
+    border-radius: 5px;
 
 }
 .sidebar{
@@ -16,7 +20,7 @@ body, html, .app, template, div{
     width: auto;
     height: 25px;
     overflow: auto;
-    background-color: black;
+    background-color: #352F44;
     margin-right: auto;
     text-align: center;
     position: relative;
@@ -37,7 +41,6 @@ div.content {
 .item{
     width: 250px;
     height: 250px;
-    background-color: #fb7185;
     padding: 1em;
     margin: 10px 10px 10px 10px;
     font-weight: 700;
@@ -49,7 +52,6 @@ div.content {
 .item_desc{
     width: 300px;
     height: 250px;
-    background-color: #fb7185;
     padding: 1em;
     margin: 10px 10px 10px 10px;
     font-weight: 700;
@@ -73,3 +75,20 @@ div.content {
     flex-wrap: wrap;
     margin: 0 10px 0 10px;
 }
+.center{
+    display: flex;
+    justify-content: center;
+}
+.card_color{
+    background-color: #DBD8E3;
+}
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
