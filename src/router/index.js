@@ -1,5 +1,5 @@
 //import cube from '../components/main_page.vue'
-import projects from '../components/projects.vue' 
+import projects from '../components/projects2.vue' 
 import home from '../components/home.vue'
 import personal from '../components/personal.vue'
 import { createRouter, createWebHashHistory } from "vue-router"

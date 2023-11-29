@@ -1,106 +1,164 @@
 body, html, .app, template, div{
     height: 100%;
     margin: 0;
-    background-color: #5C5470;
+    background-color: #191919;
+    color: #faf2d6;
     
 }
+
 .top {
-    color: #2A2438;
-    border: 4px solid #5C5470;
-    background-color: #5C5470;
+    border: 4px solid #3D3D3D;
+    background-color: #3D3D3D;
     padding: 0 7% 5px 7%;
     border-radius: 5px;
 }
+
 .top:hover{
-    background-color: #4b445c;
-    border: 4px solid #4b445c;
-    padding: 0 7% 5px 7%;
-    border-radius: 5px;
+    background-color: #695e55;
+    border: 4px solid #695e55;
+
 }
+
 .sidebar{
+    background-color: #242424;
     display: flex;
     justify-content: space-evenly;
-    margin: 0;
-    padding: 5px;
+    margin: 0px;
+    padding: 10px;
     width: auto;
     height: 25px;
     overflow: auto;
-    background-color: #352F44;
     margin-right: auto;
     text-align: center;
     position: relative;
 }
-h1{
-    margin:5px;
-}
+
 .sidebar div{
     padding: 8px;
     font-size: 24px;
     display: block;
 }
+
 div.content {
     margin-left: 200px;
     padding: 1px 16px;
     height: 1000px;
 }
+
 .item{
     width: 300px;
     height: 300px;
     padding: 1em;
-    margin: 10px 10px 10px 10px;
+    margin: 0px 10px 10px 10px;
     font-weight: 700;
     text-align: center;
     border: 5px;
     border-radius: 10px;
-    margin-top: 3%;
-    margin-bottom: 3%;
 
 }
+
+.high{
+    padding: 0 1% 2px 1%;
+    background-color: rgba(255, 156, 0, .5);
+
+    border-radius: 5px;
+
+
+}
+
 .item_desc{
     width: 400px;
     height: 300px;
     padding: 1em;
-    margin: 10px 10px 10px 10px;
+    margin: 0px 10px 10px 10px;
     font-weight: 700;
     text-align: center;
     border: 5px;
     border-radius: 10px;
-    margin-top: 3%;
-    margin-bottom: 3%;
 }
+
 .row {
     display: flex;
     flex-direction: row;
     justify-content: center;
     
 }
+
 .col{
     display: flex;
     flex-direction: column;
     
 }
+
 .container{
     display: flex;
     flex-wrap: wrap;
-    margin: 0;
+    margin: 20px;
 
 }
+
 .center{
     display: flex;
     justify-content: center;
     text-align: center;
-
 }
+
+.center_notext{
+    display: flex;
+    justify-content: center;
+}
+
 .card_color{
     background-color: #DBD8E3;
 }
+
+a{
+    color: #83a598;
+}
+
 a:link { text-decoration: none; }
 
 
 a:visited { text-decoration: none; }
 
 
-a:hover { color: black; }
+a:hover { }
 
 
 a:active { text-decoration: none; }
+
+.main_item{
+    width: 600px;
+    height: 300px;
+    padding: 1em;
+    margin: 0px 10px 10px 10px;
+    font-weight: 700;
+    text-align: center;
+    border: 5px;
+    border-radius: 10px;
+}
+
+.title{
+    width: 600px;
+    height: 100%;
+    padding: 1em;
+    margin: 0px 10px 10px 10px;
+    font-weight: 700;
+    border: 5px;
+    border-radius: 10px;
+}
+
+h2{
+    color: #f8c537;
+}
+
+.imrow {
+    display: flex;
+    height: 185px;
+  }
+  
+.imcol {
+    flex: 33.33%;
+    padding: 5px;
+    height: 185px;
+}
