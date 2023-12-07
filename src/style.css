@@ -89,7 +89,6 @@ div.content {
 .col{
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
 }
 
 .container{
@@ -161,6 +160,7 @@ h2{
     display: flex;
     height: auto;
     max-height: 100%; 
+    justify-content: center;
   }
   
 .imcol {
