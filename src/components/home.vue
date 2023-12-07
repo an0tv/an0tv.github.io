@@ -2,30 +2,26 @@
         <head>
             <link type="stylesheet" href="../style.css">
         </head>
-        <div class="center">
-            <div>
-            <h1>
-                Andrey Otvagin
-            </h1>
-            
-            <div class="main_item">
-                <p>
-                Student at UCSB currently majoring in
-                <span class="high">Statistics and Data Science.</span> 
-            </p>
-            <p>
-                I am also majoring in <span class="high">Computer Engineering.</span>
-            </p>
-            <p>
-                I am interested in data collection and processing using IOT networks. Currently exploring the feasability of 
-                CAN frame collection and analysis in realtime.  
-            </p>
-            </div>
-            <span>
-                <p> Links </p>
-                <a href="https://github.com/an0tv">GitHub </a>
-            </span>
-            <p></p>
+        <div class="row">
+            <div class="col">
+                <center>
+                    <h1>
+                        Andrey Otvagin
+                    </h1>
+                    <p style="justify-content: center;">
+                        Student at UCSB currently majoring in
+                        <span class="high">Statistics and Data Science.</span> 
+                    </p>
+                    <p>
+                        I am also majoring in <span class="high">Computer Engineering.</span>
+                    </p>
+                    <p style="word-wrap: break-word;width: 75%;">
+                    I am interested in data collection and processing using IOT networks. Currently exploring the feasability of 
+                    CAN frame collection and analysis in realtime.  
+                    </p>
+                    <p> Links </p>
+                        <a href="https://github.com/an0tv">GitHub </a>
+                </center>
             </div>
         </div>
         
