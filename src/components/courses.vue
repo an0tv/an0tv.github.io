@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class = "col">
-            <p>
+            <h1 style="margin-top:10px; margin-bottom: 0;">Courses</h1>
                 <h2>University of Califonia, Santa Barbara</h2>
                 <ul>
                     <li>Fall 2022</li>
@@ -37,7 +37,6 @@
                         <li><a href="https://catalog.ucsb.edu/courses/PHYS%203L">PHYS 3L - Physics Laboratory</a></li>
                     </ul>
                 </ul>
-            </p>
         </div>
     </div>
 </template>
