@@ -1,1 +1,1 @@
-This projecst is useing Vite,Vue and ThreeJS. 
+Personal website that kinda lists what I am currently working on.
