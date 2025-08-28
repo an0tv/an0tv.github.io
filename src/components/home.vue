@@ -2,27 +2,28 @@
         <head>
             <link type="stylesheet" href="../style.css">
         </head>
-        <div class="row">
-            <div class="col">
+        <div class="home-container">
                 <center>
                     <h1>
                         Andrey Otvagin
                     </h1>
-                    <p style="justify-content: center;">
-                        Student at UCSB currently majoring in
-                        <span class="high">Statistics and Data Science.</span> 
+                    <p style="word-wrap: break-word; max-width: 650px; margin: 20px auto;">
+                        Student at UCSB currently double majoring in
+                        <span class="high">Statistics and Data Science</span> 
+                        and
+                        <span class="high">Computer Engineering.</span>
+                        Gradutaing in 2026 with dual BS and 2027 with MS in 
+                       Electrical and Computer Engineering.
                     </p>
-                    <p>
-                        I am also majoring in <span class="high">Computer Engineering.</span>
+
+                    <p style="word-wrap: break-word; max-width: 600px; margin: 20px auto;">
+                    I am interested in data collection and processing using IoT networks. Currently exploring high through-put data collection through custom hardware & software for automotive systems. 
                     </p>
-                    <p style="word-wrap: break-word;width: 75%;">
-                    I am interested in data collection and processing using IOT networks. Currently exploring the feasability of 
-                    CAN frame collection and analysis in realtime.  
-                    </p>
-                    <p> Links </p>
-                        <a href="https://github.com/an0tv">GitHub </a>
+                    
+                    <div class="links-section">
+                        <a href="https://github.com/an0tv" target="_blank">GitHub</a>
+                    </div>
                 </center>
-            </div>
         </div>
         
 </template>
