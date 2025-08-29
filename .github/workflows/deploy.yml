@@ -37,7 +37,7 @@ jobs:
       - name: Build LaTeX Resume
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: "resuma.tex"
+          root_file: "resume.tex"
       - name: Move PDF to public folder
         run: |
           mkdir -p public
