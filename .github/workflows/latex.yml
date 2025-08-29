@@ -1,5 +1,10 @@
-name: Build Resumes
-on: [push]
+name: Build Resumes (Disabled - Integrated into deploy.yml)
+on: 
+  # Disabled - now part of deploy workflow
+  # push:
+  #   paths:
+  #     - '**.tex'
+  workflow_dispatch:
 jobs:
   build_latex:
     runs-on: ubuntu-latest
@@ -32,3 +37,8 @@ jobs:
         with:
           name: resumes
           path: '*.pdf'
+      - name: Trigger deployment
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: resume-updated
