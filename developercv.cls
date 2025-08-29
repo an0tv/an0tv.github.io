@@ -7,7 +7,8 @@
 % http://www.LaTeXTemplates.com
 %
 % Authors:
-% Omar Roldan
+% Cutomized for personal usage
+% Based on a template by Omar Roldan
 % Based on a template by  Jan Vorisek (jan@vorisek.me)
 % Based on a template by Jan Küster (info@jankuester.com)
 % Modified for LaTeX Templates by Vel (vel@LaTeXTemplates.com)
@@ -139,3 +140,19 @@
 
 % Command to output a separator slash between lists, e.g. '  /  '
 \newcommand{\slashsep}{\hspace{3mm}/\hspace{3mm}}
+\renewcommand{\labelitemii}{\scalebox{0.5}{$\bullet$}} % Second-level bullet
+
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\fancypagestyle{finalpage}{
+  \fancyhf{}
+  \fancyfoot[R]{\scriptsize \textcolor{white}{\today}} % right footer
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\AtEndDocument{\thispagestyle{finalpage}}
+
+
