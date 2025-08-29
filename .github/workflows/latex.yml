@@ -1,0 +1,34 @@
+name: Build Resumes
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    name: Build LaTeX
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name: Identify LaTeX files
+        run: |
+          {
+            echo 'GITHUB_FILE_PATHS<<EOF'
+            echo "$(printf '%s\n' *.tex)"
+            echo EOF
+          } >> $GITHUB_ENV
+      - name: Compile LaTeX files
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ${{env.GITHUB_FILE_PATHS}}
+      - name: Move PDF to public folder
+        run: |
+          mkdir -p public
+          cp *.pdf public/
+      - name: Commit and push PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-update resume PDF"
+          file_pattern: "public/*.pdf"
+      - name: Upload PDF files (backup)
+        uses: actions/upload-artifact@v4
+        with:
+          name: resumes
+          path: '*.pdf'
