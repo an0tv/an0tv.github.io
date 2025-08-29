@@ -37,11 +37,11 @@ jobs:
       - name: Build LaTeX Resume
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: "test.tex"
+          root_file: "resuma.tex"
       - name: Move PDF to public folder
         run: |
           mkdir -p public
-          cp test.pdf public/resume.pdf
+          cp resume.pdf public/resume.pdf
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
