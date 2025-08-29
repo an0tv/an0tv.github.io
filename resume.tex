@@ -45,7 +45,7 @@
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.73\textwidth}
-        C, C++, Python, ASM, Systemverilog, VHDL, R
+        C, C++, Python, ASM, SystemVerilog, VHDL, R
     \end{minipage}
     \vspace{4mm}
     
@@ -54,7 +54,7 @@
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.73\textwidth}
-        Docker, Git, Eclipse Mosquitto, WSL, OpenOCD, KiCad, Altium, ModelSim, LTspice, logisim-evolution, 
+        Docker, Git, Eclipse Mosquitto, WSL, OpenOCD, KiCad, Altium, ModelSim, LTspice, Logisim-Evolution, 
     \end{minipage}
     
 \end{minipage}
@@ -125,6 +125,10 @@
             \item Engineered a custom CAN protocol with built-in system prioritization, ensuring reliable communication under high bus load. 
             \item Helped develop a firmware monorepo to strive for architecture agnostic development as well as easier build pipeline implementation for HOOTL testing. 
             \item Implemented CI/CD pipelines for a HOOTL system, accelerating development and reducing integration friction.
+            \item Promoted collaborative coding practices and knowledge sharing within the team through
+            extensive documentation.
+            \item Coordinated closely with the mechanical and aerodynamic teams for better hardware integration into respective assemblies.  
+            
         \end{itemize}}
 \end{entrylist}
 
@@ -143,7 +147,7 @@
     \item Created a pipelined RISC-V processor in verilog.
     \item Implementation features: 
         \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=10pt]
-            \item Hazard Detection.
+            \item Hazard Detection with respective forwarding and flushing.
             \item Branch Prediction implemented with  5-bit GHR, 2-bit PHT (32 entries), and 32-entry BTB. 
             \item Cache emulation with Hardware Prefetcher as well as Critical Word First and Early Restart.
             \item Superscalar implemeted via doubling the stages in the pipeline and modifying hazard and forwarding to cover cross pipeline forwarding as well as single branch execution.
@@ -165,9 +169,8 @@
             \item Buffered 2.048V reference.
             \item On-board programmer \& debugger via USB-C.
             \item 7-17V to 5V buck and 5V to 3.3V linear regulator.
-            \item LP filter for 3.3Va as well as adjustable voltage reference source. 
+            \item LP filter for 3.3VA as well as adjustable voltage reference source. 
             \item Small package (71mm * 23mm)
-            
         \end{itemize}
     \end{itemize}
     }
@@ -175,3 +178,4 @@
 \end{entrylist}
 
 \end{document}
+shoul
