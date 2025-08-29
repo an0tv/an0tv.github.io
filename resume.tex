@@ -1,0 +1,177 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Developer CV
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[9pt]{developercv} % Default font size, values from 8-12pt are recommended
+\usepackage{multicol}
+\setlength{\columnsep}{0mm}
+%----------------------------------------------------------------------------------------
+\usepackage{lipsum}  
+
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}[t]{0.5\textwidth} 
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	{ \fontsize{16}{20} \textcolor{black}{\textbf{\MakeUppercase{Andrey Otvagin}}}} % First name
+	
+	\vspace{6pt}
+    \icon{Envelope}{11}{\href{mailto:otvagin@ucsb.edu}{otvagin@ucsb.edu}}
+    \hspace{12pt}
+
+    \icon{Github}{11}{\href{https://github.com/an0tv}{github.com/an0tv}}
+    \hspace{12pt}
+    
+    \icon{Chain}{11}{\href{https://an0tv.github.io/}{an0tv.github.io}}
+    \hspace{12pt}
+
+    
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.5\textwidth}
+    \vspace{-18pt}
+    \cvsect{Skills}
+    \vspace{-6pt}
+    
+    \begin{minipage}[t]{0.2\textwidth}
+        \textbf{Languages:}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.73\textwidth}
+        C, C++, Python, ASM, Systemverilog, VHDL, R
+    \end{minipage}
+    \vspace{4mm}
+    
+    \begin{minipage}[t]{0.2\textwidth}
+        \textbf{Technologies:}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.73\textwidth}
+        Docker, Git, Eclipse Mosquitto, WSL, OpenOCD, KiCad, Altium, ModelSim, LTspice, logisim-evolution, 
+    \end{minipage}
+    
+\end{minipage}
+
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\vspace{-4 pt}
+\cvsect{Education}
+\begin{entrylist}
+
+\vspace{-4pt}
+
+    \entry
+    {}
+    {University of California, Santa Barbara}
+    {September 2025 – June 2027}
+    {M.S. Computer Engineer
+    \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=10pt]
+        \item Focus: Computer Architecture \& VLSI
+    \end{itemize}}
+    \entry
+    {}
+    {University of California, Santa Barbara}
+    {September 2022 – June 2026}
+    {B.S. Computer Engineering
+    \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=10pt]
+        \item Relevant Coursework: Deep Learning, Advanced Computer Architecture, Data Structures \& Algorithms, Embedded System, Machine Learning, Circuits, VLSI
+    \end{itemize}}
+
+    \entry
+    {}
+    {University of California, Santa Barbara}
+    {September 2022 – June 2026}
+    {B.S. Statistics \& Data Science 
+    \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=10pt]
+        \item Relevant Coursework: SAS Programming, SQL, Advanced Statistical Models, Survival Analysis, Stochastic Processes, Statistical Machine Learning, Regression Analysis, Advanced Linear Algebra
+    \end{itemize}}
+    
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+\vspace{-14 pt}
+\cvsect{Experience}
+\begin{entrylist}
+    \entry
+        {}
+        {Becton Dickinson Bioscience - Firmware R\&D Engineer}
+        {June 2024 – Present}
+        {\vspace{-8pt}
+        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=10pt]
+            \item Developed Hardware and Software for HOOTL and HITL test suite for embedded systems. 
+            \item Optimized system responsiveness by designing timeout strategies for long-running processes, enhancing overall system reliability. 
+            \item Deployed a build pipeline to allow for nightly firmware builds for embedded subsystems.  
+            \item Created thread-safe asynchronous fault monitoring system for embedded linux environment. 
+        \end{itemize}}
+    \entry
+        {}
+        {Gaucho Racing (UCSB Formula SAE) - Electronics \& Data Lead}
+        {September 2022 – Present}
+        {\vspace{-8pt}
+        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=10pt]
+            \item Led development of SAM, a high-throughput sensor array module for automotive systems, enabling versatile data collection including tire and rotor temperature, push-rod force, ride height, and vehicle dynamics monitoring via EKF with differential GPS and accelerometers.
+            \item Deployed a real-time data collection \& analytics system on Jetson Orin Nano to monitor data streamed by SAM through a custom CAN \& CANFD protocol translator, allowing for real-time thermal prediction and anomaly detection. 
+            \item Engineered a custom CAN protocol with built-in system prioritization, ensuring reliable communication under high bus load. 
+            \item Helped develop a firmware monorepo to strive for architecture agnostic development as well as easier build pipeline implementation for HOOTL testing. 
+            \item Implemented CI/CD pipelines for a HOOTL system, accelerating development and reducing integration friction.
+        \end{itemize}}
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	Projects
+%----------------------------------------------------------------------------------------
+\vspace{-14 pt}
+\cvsect{Projects}
+\begin{entrylist}
+    \entry
+    {}
+    {RISC Processor}
+    {Spring 2025}
+    {\vspace{-8pt}
+    \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=10pt]
+    \item Created a pipelined RISC-V processor in verilog.
+    \item Implementation features: 
+        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=10pt]
+            \item Hazard Detection.
+            \item Branch Prediction implemented with  5-bit GHR, 2-bit PHT (32 entries), and 32-entry BTB. 
+            \item Cache emulation with Hardware Prefetcher as well as Critical Word First and Early Restart.
+            \item Superscalar implemeted via doubling the stages in the pipeline and modifying hazard and forwarding to cover cross pipeline forwarding as well as single branch execution.
+        \end{itemize}
+    \end{itemize}
+    }
+
+    \entry
+    {}
+    {SAM}
+    {Fall 2024 - Present}
+    {\vspace{-8pt}
+    \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=10pt]
+    \item Created an alternative to a Teensy 4.1 using an STM32G4 with a focus on automotive usage.
+    \item Designed a compatible set of submodules for SAE vehicle characterization, meant for dynamic testing.
+    \item Features:    
+        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=10pt]
+            \item Dual CAN-FD transceivers.
+            \item Buffered 2.048V reference.
+            \item On-board programmer \& debugger via USB-C.
+            \item 7-17V to 5V buck and 5V to 3.3V linear regulator.
+            \item LP filter for 3.3Va as well as adjustable voltage reference source. 
+            \item Small package (71mm * 23mm)
+            
+        \end{itemize}
+    \end{itemize}
+    }
+    
+\end{entrylist}
+
+\end{document}

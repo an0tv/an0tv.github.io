@@ -22,7 +22,7 @@
                     
                     <div class="links-section">
                         <a href="https://github.com/an0tv" target="_blank">GitHub</a>
-                        <a href="/test.pdf" target="_blank">Resume</a>
+                        <a href="/resume.pdf" target="_blank">Resume</a>
                     </div>
                 </center>
         </div>
