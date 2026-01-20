@@ -45,6 +45,20 @@
             </div>
 
             <div class="project-item">
+                <router-link to="/projects/sam" class="project-link">
+                    <div class="project-card">
+                        <h2>Gaucho Racing SAM 2024</h2>
+                        <p class="project-summary">
+                            SAM or Sensor array module strides to be a Teensy
+                            4.0 alternative with hats designed for vehicle
+                            characterization and data collection. Works
+                            alongside with the Gaucho Racing Cloud Telemetry.
+                        </p>
+                    </div>
+                </router-link>
+            </div>
+
+            <div class="project-item">
                 <router-link to="/projects/steering-wheel" class="project-link">
                     <div class="project-card">
                         <h2>Gaucho Racing Steering Wheel 2023</h2>

@@ -17,14 +17,9 @@
             <div class="project-images">
                 <div class="imrow">
                     <img
-                        src="../assets/penthouse.png"
-                        alt="Penthouse"
-                        style="
-                            max-height: 400px;
-                            height: auto;
-                            width: 100%;
-                            max-width: 800px;
-                        "
+                        src="../assets/vcpu.png"
+                        alt="Verilog CPU"
+                        style="max-height: 600px; height: 100%"
                     />
                 </div>
             </div>
