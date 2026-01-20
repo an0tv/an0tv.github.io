@@ -83,7 +83,7 @@
                     <ul>
                         <li>
                             <strong>Real-time Data Collection:</strong>
-                            LTE-enabled CAN frame collection from race vehicle
+                            LTE-enabled CAN frame collection from FSAE vehicle
                         </li>
                         <li>
                             <strong>MQTT Messaging:</strong> Reliable message
@@ -96,10 +96,6 @@
                         <li>
                             <strong>Live Dashboard:</strong> React-based
                             real-time telemetry visualization
-                        </li>
-                        <li>
-                            <strong>Data Analysis:</strong> Historical data
-                            analysis capabilities
                         </li>
                     </ul>
                 </section>
