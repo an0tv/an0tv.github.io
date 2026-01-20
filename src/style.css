@@ -407,8 +407,8 @@ h2 {
 .hardware-item img {
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+    /*aspect-ratio: 0.75;*/
+    object-fit: contain;
     border-radius: 5px;
     margin-bottom: 12px;
 }
@@ -434,7 +434,7 @@ h2 {
     .hardware-item img {
         width: 100%;
         height: auto;
-        aspect-ratio: 1 / 1;
+        /*aspect-ratio: 3 / 4;*/
     }
 
     .hardware-item p {
@@ -456,6 +456,6 @@ h2 {
     .hardware-item img {
         width: 100%;
         height: auto;
-        aspect-ratio: 1 / 1;
+        /*aspect-ratio: 3 / 4;*/
     }
 }
