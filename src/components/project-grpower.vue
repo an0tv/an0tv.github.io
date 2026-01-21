@@ -11,7 +11,7 @@
             </div>
 
             <center>
-                <h1>Gaucho Racing SAM 2024</h1>
+                <h1>Gaucho Racing LV PDB</h1>
             </center>
 
             <div class="project-images">

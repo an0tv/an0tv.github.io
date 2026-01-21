@@ -27,9 +27,10 @@
                     margin: 20px auto;
                 "
             >
-                I am interested in data collection and processing using IoT
-                networks. Currently exploring high through-put data collection
-                through custom hardware & software for automotive systems.
+                Currently working on a project to develop a low-cost,
+                high-throughput data collection system for automotive systems
+                using custom hardware and software. Also, working on chirp radar
+                fusion for autonomous vehicle tracking.
             </p>
 
             <div class="links-section">
