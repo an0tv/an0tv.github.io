@@ -13,8 +13,7 @@
                     <div class="project-card-content">
                         <h2>Gaucho Racing Penthouse 2025</h2>
                         <p class="project-summary">
-                            Interactive dashboard integrated into UCSB GR23
-                            steering wheel with gyroscope positioning
+                            Front-end enclosure for GR26
                         </p>
                     </div>
                     <div class="project-card-image">
