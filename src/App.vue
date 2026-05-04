@@ -236,7 +236,24 @@ function closeModal() {
                 </div>
 
                 <div class="modal__body">
-                    <div v-if="selectedProject.images" class="modal__gallery">
+                    <div
+                        v-if="selectedProject.cover3d"
+                        class="modal__model-wrap"
+                    >
+                        <Project3D
+                            autoplay
+                            :seed="projects.indexOf(selectedProject)"
+                            :model="
+                                typeof selectedProject.cover3d === 'string'
+                                    ? selectedProject.cover3d
+                                    : null
+                            "
+                        />
+                    </div>
+                    <div
+                        v-else-if="selectedProject.images"
+                        class="modal__gallery"
+                    >
                         <img
                             v-for="img in selectedProject.images"
                             :key="img"

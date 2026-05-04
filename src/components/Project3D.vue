@@ -6,11 +6,22 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 const props = defineProps({
     seed: { type: Number, default: 0 },
     model: { type: String, default: null },
+    autoplay: { type: Boolean, default: false },
+    k: { type: Number, default: 0.2 }, // spring stiffness
+    b: { type: Number, default: 0.5 }, // damping coefficient
 });
 
 const container = ref(null);
+const isHovered = ref(false);
+
 let scene, camera, renderer, object;
 let animationId = null;
+let rotX = 0,
+    rotY = 0;
+let velX = 0,
+    velY = 0;
+const spinSpeedX = 0.005 * (Math.random() < 0.5 ? 1 : -1),
+    spinSpeedY = 0.01 * (Math.random() < 0.5 ? 1 : -1);
 
 const geometries = [
     () => new THREE.IcosahedronGeometry(1, 0),
@@ -23,14 +34,24 @@ const geometries = [
 const colors = [0x7c6ff0, 0x4f8cff, 0xc084fc, 0x6ee7b7, 0xf472b6];
 
 function addLights(scene) {
-    const light = new THREE.DirectionalLight(0xffffff, 0.8);
-    light.position.set(2, 2, 4);
-    scene.add(light);
-    const rim = new THREE.DirectionalLight(0xa898ff, 0.4);
-    rim.position.set(-2, -1, -2);
+    // Key light — from the camera's direction (front-top)
+    const key = new THREE.DirectionalLight(0xffffff, 2.4);
+    key.position.set(0, 1.5, 5);
+    scene.add(key);
+
+    // Fill light from the side
+    const fill = new THREE.DirectionalLight(0x8888ff, 1.0);
+    fill.position.set(-3, 1, 2);
+    scene.add(fill);
+
+    // Subtle back rim
+    const rim = new THREE.DirectionalLight(0xffffff, 0.3);
+    rim.position.set(0, -1, -4);
     scene.add(rim);
-    const ambient = new THREE.AmbientLight(0x4488ff, 0.2);
-    scene.add(ambient);
+
+    // Hemisphere for soft natural ambient
+    const hemi = new THREE.HemisphereLight(0x8888ff, 0x444422, 0.8);
+    scene.add(hemi);
 }
 
 onMounted(() => {
@@ -41,7 +62,7 @@ onMounted(() => {
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-    camera.position.z = 3.5;
+    camera.position.z = 4.5;
 
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(size, size);
@@ -51,28 +72,24 @@ onMounted(() => {
     addLights(scene);
 
     if (props.model) {
-        // ── Load a custom .glb model ────────────
+        const modelPath = props.model.startsWith("/")
+            ? props.model
+            : `/assets/${props.model}`;
         const loader = new GLTFLoader();
         loader.load(
-            props.model,
+            modelPath,
             (gltf) => {
                 object = gltf.scene;
-                // Center and scale the model to fit
                 const box = new THREE.Box3().setFromObject(object);
-                const size = box.getSize(new THREE.Vector3()).length();
-                const scale = 2.5 / size;
+                const scale = 2.5 / box.getSize(new THREE.Vector3()).length();
                 object.scale.setScalar(scale);
                 object.position.set(0, -0.2, 0);
                 scene.add(object);
             },
             undefined,
-            () => {
-                // On error, fall back to procedural shape
-                fallbackShape();
-            },
+            () => fallbackShape(),
         );
     } else {
-        // ── Procedural shape ────────────────────
         fallbackShape();
     }
 
@@ -92,8 +109,41 @@ onMounted(() => {
     function animate() {
         animationId = requestAnimationFrame(animate);
         if (object) {
-            object.rotation.x += 0.005;
-            object.rotation.y += 0.01;
+            if (props.autoplay) {
+                // Always spin
+                rotX += spinSpeedX;
+                rotY += spinSpeedY;
+                object.rotation.x = rotX;
+                object.rotation.y = rotY;
+            } else if (isHovered.value) {
+                // Spin while hovered
+                rotX += spinSpeedX;
+                rotY += spinSpeedY;
+                velX = 0;
+                velY = 0;
+                object.rotation.x = rotX;
+                object.rotation.y = rotY;
+            } else {
+                // Spring back toward rest
+                // acceleration = -k * position - b * velocity
+                const ax = -props.k * rotX - props.b * velX;
+                const ay = -props.k * rotY - props.b * velY;
+                velX += ax;
+                velY += ay;
+                rotX += velX;
+                rotY += velY;
+                // Snap when both position and velocity are near zero
+                if (Math.abs(rotX) < 0.0001 && Math.abs(velX) < 0.0001) {
+                    rotX = 0;
+                    velX = 0;
+                }
+                if (Math.abs(rotY) < 0.0001 && Math.abs(velY) < 0.0001) {
+                    rotY = 0;
+                    velY = 0;
+                }
+                object.rotation.x = rotX;
+                object.rotation.y = rotY;
+            }
         }
         renderer.render(scene, camera);
     }
@@ -118,7 +168,16 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div ref="container" class="three-canvas"></div>
+    <div
+        ref="container"
+        class="three-canvas"
+        @mouseenter="
+            isHovered = true;
+            velX = 0;
+            velY = 0;
+        "
+        @mouseleave="isHovered = false"
+    ></div>
 </template>
 
 <style scoped>

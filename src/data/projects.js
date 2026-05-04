@@ -58,7 +58,8 @@ export const projects = [
     id: "PSC",
     title: "Pedals Signal Conditioner 2025",
     summary: "GR26 Pedals signal conditioner, 0-5V to 4-20mA converter",
-    image: "PSC.png",
+    image: "PSC.glb",
+    cover3d: "PSC.glb",
     tags: ["PCB Design", "3D Design"],
     content: [
       {
@@ -81,7 +82,8 @@ export const projects = [
     title: "Power Shenanigans 2025",
     summary:
       "Just a dive into power electronics and a collection of all of the projects in this general field. ",
-    image: "power.png",
+    image: "DCDC.glb",
+    cover3d: "DCDC.glb",
     tags: ["Power Electronics", "PCB Design"],
     content: [
       {
