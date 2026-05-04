@@ -155,7 +155,7 @@ export const projects = [
     summary:
       "Real-time telemetry with MQTT, SingleStore DB, and React dashboard",
     image: "singlestore.png",
-    cover3d: true,
+    // cover3d: true,
     tags: ["MQTT", "SingleStore", "React", "LTE", "CAN Bus"],
     images: ["mosquitto.png", "singlestore.png", "react.png"],
     content: [
@@ -189,6 +189,7 @@ export const projects = [
     summary:
       "Custom Teensy 4.1 alternative with hats for vehicle characterization",
     image: "sam.png",
+    // cover3d: "gr25_nodes.glb",
     tags: ["STM32", "PCB Design", "CAN FD", "Kicad"],
     images: ["sam-F.png", "sam-B.png", "sam-F3D.png", "sam-B3D.png"],
     content: [

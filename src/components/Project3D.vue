@@ -75,19 +75,55 @@ onMounted(() => {
         const modelPath = props.model.startsWith("/")
             ? props.model
             : `/assets/${props.model}`;
+        console.log("Loading GLB from:", modelPath);
+
+        // Test fetch first
+        fetch(modelPath)
+            .then((r) => {
+                console.log("Fetch status:", r.status, r.ok);
+                return r.arrayBuffer();
+            })
+            .then((buf) => {
+                console.log("GLB bytes:", buf.byteLength);
+            })
+            .catch((e) => console.error("Fetch failed:", e));
+
         const loader = new GLTFLoader();
         loader.load(
             modelPath,
             (gltf) => {
                 object = gltf.scene;
+                console.log(
+                    "GLB loaded, scene children:",
+                    object.children.length,
+                );
+                console.log("GLB animations:", gltf.animations?.length);
                 const box = new THREE.Box3().setFromObject(object);
-                const scale = 2.5 / box.getSize(new THREE.Vector3()).length();
-                object.scale.setScalar(scale);
+                const boxSize = box.getSize(new THREE.Vector3()).length();
+                if (boxSize > 0.001) {
+                    const scale = 2.5 / boxSize;
+                    object.scale.setScalar(scale);
+                }
                 object.position.set(0, -0.2, 0);
                 scene.add(object);
             },
-            undefined,
-            () => fallbackShape(),
+            (xhr) => {
+                if (xhr.total) {
+                    console.log(
+                        `GLB: ${Math.round((xhr.loaded / xhr.total) * 100)}% loaded`,
+                    );
+                }
+            },
+            (err) => {
+                console.error("GLB load error:", err);
+                if (err instanceof ErrorEvent) {
+                    console.error("Message:", err.message);
+                } else if (err instanceof ProgressEvent) {
+                    console.error("Status:", err.target?.status);
+                }
+                console.error("Stack:", new Error().stack);
+                fallbackShape();
+            },
         );
     } else {
         fallbackShape();
