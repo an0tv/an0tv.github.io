@@ -3,8 +3,6 @@
    Change --bg-image to set a custom background.
    =================================================================== */
 :root {
-    --bg-image: url("/assets/DSC03554.jpg");
-
     --bg-card: rgba(24, 24, 37, 0.5);
     --bg-card-hover: rgba(30, 30, 50, 0.7);
 
@@ -45,10 +43,11 @@ html {
 }
 
 body {
-    background: var(--bg-image);
+    background-image: url("/assets/DSC03554.jpg");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
+    background-color: #0b0b12;
     color: var(--text-primary);
     font-family:
         "Inter",

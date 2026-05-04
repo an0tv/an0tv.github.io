@@ -184,7 +184,7 @@ function closeModal() {
                         />
                         <img
                             v-else
-                            :src="`./assets/${p.image}`"
+                            :src="`/assets/${p.image}`"
                             :alt="p.title"
                             class="project-card__img"
                         />
@@ -240,13 +240,13 @@ function closeModal() {
                         <img
                             v-for="img in selectedProject.images"
                             :key="img"
-                            :src="`./assets/${img}`"
+                            :src="`/assets/${img}`"
                             class="modal__gallery-img"
                         />
                     </div>
                     <img
                         v-else
-                        :src="`./assets/${selectedProject.image}`"
+                        :src="`/assets/${selectedProject.image}`"
                         class="modal__hero-img"
                     />
 
