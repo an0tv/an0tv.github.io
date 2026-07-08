@@ -24,3 +24,5 @@ dist-ssr
 
 #pdf
 /public/resume.pdf
+/public/resume_hw.pdf
+/public/resume_sw.pdf

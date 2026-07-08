@@ -138,8 +138,17 @@ function closeModal() {
                     class="btn btn--outline"
                     >GitHub</a
                 >
-                <a href="./resume.pdf" target="_blank" class="btn btn--outline"
-                    >Resume</a
+                <a
+                    href="./resume_hw.pdf"
+                    target="_blank"
+                    class="btn btn--outline"
+                    >Resume (HW)</a
+                >
+                <a
+                    href="./resume_sw.pdf"
+                    target="_blank"
+                    class="btn btn--outline"
+                    >Resume (SW)</a
                 >
             </div>
         </div>

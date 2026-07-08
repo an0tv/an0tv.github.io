@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ['main']
+    branches: ["main"]
 
   # Runs when resume is updated
   repository_dispatch:
@@ -21,7 +21,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -34,19 +34,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build LaTeX Resume
+      - name: Build LaTeX Resume (HW)
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: "resume.tex"
-      - name: Move PDF to public folder
+          root_file: "resume_hw.tex"
+      - name: Build LaTeX Resume (SW)
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: "resume_sw.tex"
+      - name: Move PDFs to public folder
         run: |
           mkdir -p public
-          cp resume.pdf public/resume.pdf
+          cp resume_hw.pdf public/resume_hw.pdf
+          cp resume_sw.pdf public/resume_sw.pdf
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
+          cache: "npm"
       - name: Install dependencies
         run: npm install
       - name: Build
@@ -57,7 +62,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist repository
-          path: './dist'
+          path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
